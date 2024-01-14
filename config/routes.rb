@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  namespace :api, defaults: { format: :json }, constraint: { subdomain: 'api' }, path: '/'  do 
-  
+  namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: "/"  do 
+    namespace :v1, path: "/", constraints: ApiVersionConstraint.new(version: 1, default: true) do
+      
+    end
   
   
   
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
   # root "posts#index"
