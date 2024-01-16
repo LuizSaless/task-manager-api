@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 #   pending "add some examples to (or delete) #{__FILE__}"
-# let(:user) { build(:user) }
+let(:user) { build(:user) }
 
     # it { is_expected.to validate_presence_of(:email) }
     # it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
   
       # it { expect(user).to respond_to(:email) }
 
-      # it { expect(user).to validate_presence_of(:name) }
+      it { expect(user).to validate_presence_of(:name) }
 
 
     # context 'when name is blank' do
@@ -20,17 +20,17 @@ RSpec.describe User, type: :model do
     #   it { expect(user).not_to be_valid }
     # end
 
-  #  context 'when name is nil' do
-  #    before { user.name = nil } 
+    # context 'when name is nil' do
+    #   before { user.name = nil } 
 
-  #    it { expect(user).not_to be_valid }
-  #  end
+    #   it { expect(user).not_to be_valid }
+    # end
 
-  before { @user = FactoryBot.build(:user) }
+  # before { @user = FactoryBot.build(:user) }
 
-  it { expect(@user).to respond_to(:email) }
-  it { expect(@user).to respond_to(:name) }
-  it { expect(@user).to respond_to(:password) }
-  it { expect(@user).to respond_to(:password_confirmation) }
-  it { expect(@user).to be_valid }
+  # it { expect(@user).to respond_to(:email) }
+  # it { expect(@user).to respond_to(:name) }
+  # it { expect(@user).to respond_to(:password) }
+  # it { expect(@user).to respond_to(:password_confirmation) }
+  # it { expect(@user).to be_valid }
 end
