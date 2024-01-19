@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, defaults: { format: :json }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: "/"  do 
     namespace :v1, path: "/", constraints: ApiVersionConstraint.new(version: 1, default: true) do
