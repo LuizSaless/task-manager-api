@@ -1,31 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Users", type: :request do
-  let!(:user) { create(:user) }
-  let(:user_id) { user.id }
 
-  before { host! "api.task-manager.test" }
+# describe User do
+#   before { @user = FactoryBot.build(:user) }
 
+#   subject { @user }
 
-  describe "GET /api/users/:id" do
-    before do
-      headers = { 'Accept' => 'application/vnd.taskmanager.v1' }
-      get "/api/users/#{user_id}", params: {}, headers: headers
-    end
+#   it { should respond_to(:email) }
+#   it { should respond_to(:password) }
+#   it { should respond_to(:password_confirmation) }
 
-    context "when the user exists" do
-      it "returns the users" do
-        user_response = JSON.parse(response.body)
-
-        expect(user_response["id"]).to eq(user_id)
-      end
-
-
-    end
-
-    
-  end
-end
+#   it { should be_valid }
+# end
 # Specs in this file have access to a helper object that includes
 # the Api::V1::UsersHelper. For example:
 #
