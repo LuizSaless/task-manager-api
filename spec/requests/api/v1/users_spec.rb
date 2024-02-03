@@ -4,49 +4,42 @@ RSpec.describe "Api::V1::Users", type: :request do
   let!(:user) { create(:user) }
   let(:user_id) { user.id }
 
-  before { host! "api.task-manager.test" }
+  before { host! "api.taskmanager.test" }
 
-  describe User do
-    before { @user = FactoryBot.build(:user) }
 
-    subject { @user }
+  describe "GET /api/users/:id" do
+    before do
+      headers = { 'Accept' => 'application/vnd.taskmanager.v1' }
+      get "/api/users/#{user_id}", params: {}, headers: headers
+    end
 
-    it { should respond_to(:email) }
-    it { should respond_to(:password) }
-    it { should respond_to(:password_confirmation) }
+    context "when the user exists" do
+      it "returns the users" do
+        user_response = JSON.parse(response.body)
+        expect(user_response["id"]).to eq(user_id)
+      end
 
-    it { should be_valid }
+      it "returns status code 200" do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context "when the user does not exists" do
+      let(:user_id) { 10000 }
+
+      it "returns status code 404" do
+        expect(response).to have_http_status(404)
+      end
+    end
+    
   end
 end
 
 
 
-#   describe "GET /api/users/:id" do
-#     before do
-#       headers = { 'Accept' => 'application/vnd.taskmanager.v1' }
-#       get "/api/users/#{user_id}", params: {}, headers: headers
-#     end
-
-#     context "when the user exists" do
-#       it "returns the users" do
-#         user_response = JSON.parse(response.body)
-
-#         expect(user_response["id"]).to eq(user_id)
-#       end
-
-
-#     end
-    
-#   end
-# end
-
-
-
-require 'rails_helper'
+# require 'rails_helper'
 
 # RSpec.describe "Api::V1::Users", type: :request do
-
-
 
 #   describe User do
 #     before { @user = FactoryBot.build(:user) }
@@ -70,9 +63,9 @@ require 'rails_helper'
 #     end
 #   end
 # end
-  # RSpec.describe Api::V1::UsersHelper, type: :helper do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
-  # describe "GET /index" do
-  #   pending "add some examples (or delete) #{__FILE__}"
-  # end
+# RSpec.describe Api::V1::UsersHelper, type: :helper do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end
+# describe "GET /index" do
+#   pending "add some examples (or delete) #{__FILE__}"
+# end
