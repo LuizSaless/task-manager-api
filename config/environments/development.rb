@@ -75,5 +75,5 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
   config.action_mailer.default_url_options = {host: 'localhost', porta: 3000 }
   config.hosts.clear
-  # config.hosts << "api.task-manager-teste:3000"
+  # config.hosts << "api.taskmanager-teste:3000"
 end

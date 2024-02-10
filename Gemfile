@@ -18,15 +18,17 @@ gem "puma", ">= 5.0"
 gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+# gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# gem "jbuilder"
 
 gem 'devise', '~> 4.2'
+
+gem 'active_model_serializers'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -49,6 +51,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+
 
 end
 
@@ -72,7 +76,6 @@ group :test do
   gem 'shoulda-matchers', '~> 6.0'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'  
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 
 end
