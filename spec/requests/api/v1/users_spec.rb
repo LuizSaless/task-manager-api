@@ -7,7 +7,7 @@ RSpec.describe "Api::V1::Users", type: :request do
   before {host! "api.taskmanager.test:3000"}
   describe 'GET users/:id' do
     before do
-      headers = {"Accept" => "application/vnd.task-manager.v1"}
+      headers = {"Accept" => "application/vnd.taskmanager.v1"}
       get "/users/#{user_id}", :params => {}, :headers=> headers
     end
 
@@ -20,7 +20,6 @@ RSpec.describe "Api::V1::Users", type: :request do
       it "returns status code 200" do
         expect(response).to have_http_status(200)
       end
-
     end
 
     context "when the user does not exists" do
@@ -32,6 +31,30 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
     
   end
+
+  describe 'POST /users' do
+    before do
+      headers = {"Accept" => "application/vnd.taskmanager.v1"}
+      post '/users', params: { user: user_params }, headers: headers
+    end
+
+    context 'when the request params are valid' do
+      let(:user_params) { attributes_for(:user) }
+
+      it 'returns status code 201' do
+      end
+
+      it 'returns the json data for the created user' do
+      end
+
+    end
+  end
+
+
+
+
+  
+
 end
 
 # require 'rails_helper'
