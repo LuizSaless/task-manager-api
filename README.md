@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aprendizagem:
 
-Things you may want to cover:
+FullStack API Ruby on Rails + App Angular + App Android e iOS
 
-* Ruby version
+* Ruby version  3.3.0
 
-* System dependencies
+* Rails version  7.1.2
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Database  Postgresql
