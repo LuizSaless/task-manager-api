@@ -34,17 +34,21 @@ RSpec.describe "Api::V1::Users", type: :request do
 
   describe 'POST /users' do
     before do
-      headers = {"Accept" => "application/vnd.taskmanager.v1"}
-      post '/users', params: { user: user_params }, headers: headers
+      headers = {'Accept'=> 'application/vnd.taskmanager.v1'}
+      post '/users', params:{user: user_params}, headers: headers
     end
 
     context 'when the request params are valid' do
-      let(:user_params) { attributes_for(:user) }
+
+      let(:user_params){ attributes_for(:user)}
 
       it 'returns status code 201' do
+        expect(response).to have_http_status(201)
       end
 
       it 'returns the json data for the created user' do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response[:email]).to eq(user_params[:email])
       end
 
     end
