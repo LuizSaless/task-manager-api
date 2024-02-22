@@ -16,7 +16,7 @@ RSpec.describe "Api::V1::Users", type: :request do
 
     context 'when the user exists' do
       it 'returns the user' do
-        user_response = JSON.parse(response.body)
+        json_body = JSON.parse(response.body)
         expect(user['id']).to eq(user_id)
       end
 
@@ -49,8 +49,8 @@ RSpec.describe "Api::V1::Users", type: :request do
       end
 
       it 'returns the json data for the created user' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
-        expect(user_response[:email]).to eq(user_params[:email])
+        json_body = JSON.parse(response.body, symbolize_names: true)
+        expect(json_body[:email]).to eq(user_params[:email])
       end
 
     end
@@ -63,8 +63,8 @@ RSpec.describe "Api::V1::Users", type: :request do
       end
 
       it 'return JSON data with errors' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
-        expect(user_response).to have_key(:errors)
+        json_body = JSON.parse(response.body, symbolize_names: true)
+        expect(json_body).to have_key(:errors)
       end
     end
 
@@ -83,8 +83,8 @@ RSpec.describe "Api::V1::Users", type: :request do
       end
 
       it 'return JSON data with update information' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
-        expect(user_response[:email]).to eq(user_params[:email])
+        json_body = JSON.parse(response.body, symbolize_names: true)
+        expect(json_body[:email]).to eq(user_params[:email])
       end
     end
 
@@ -96,8 +96,8 @@ RSpec.describe "Api::V1::Users", type: :request do
       end
 
       it 'return JSON data with errors' do
-        user_response = JSON.parse(response.body, symbolize_names: true)
-        expect(user_response).to have_key(:errors)
+        json_body = JSON.parse(response.body, symbolize_names: true)
+        expect(json_body).to have_key(:errors)
       end
 
     end
