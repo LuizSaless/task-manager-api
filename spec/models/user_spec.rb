@@ -8,6 +8,15 @@ let(:user) { build(:user) }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
     it { is_expected.to validate_confirmation_of(:password) }
     it { is_expected.to allow_value("luiznew7@hotmail.com").for(:email) } 
+    it { is_expected.to validate_uniqueness_of(:auth_token)}
+
+    describe '#info' do
+      it 'returns email, created_at' do
+        user.save!
+
+        expect(user.info).to eq("#{user.email} - #{user.created_at}")
+      end
+    end
   
       # it { expect(user).to respond_to(:email) }
 
