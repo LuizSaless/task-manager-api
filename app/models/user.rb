@@ -20,6 +20,7 @@ class User < ApplicationRecord
     self.auth_token = Devise.friendly_token
     end while User.exists?(auth_token: auth_token)    
   end
+  
 
 
 end

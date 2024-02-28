@@ -1,7 +1,7 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
-  # devise_for :users
+  devise_for :users, only: [:sessions], controllers: {sessions: 'api/v1/sessions'}
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   namespace :api, defaults: { format: :json },
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     scope module: :v1,
       constraints: ApiConstraints.new(version: 1, default: true) do
       resources :users, only: [:show, :create, :update, :destroy]
+      resources :sessions, only: [:create]
       # We are going to list our resources here
     end
   end
