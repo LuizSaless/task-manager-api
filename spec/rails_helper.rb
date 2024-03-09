@@ -69,6 +69,9 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = [:should, :expect]
   end
+  config.render_views = true
+  # the rest of config
+
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
