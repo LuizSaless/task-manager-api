@@ -4,6 +4,8 @@ RSpec.describe User, type: :model do
 #   pending "add some examples to (or delete) #{__FILE__}"
 let(:user) { build(:user) }
 
+    it { is_expected.to have_many(:tasks).dependent(:destroy) }
+
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
     it { is_expected.to validate_confirmation_of(:password) }

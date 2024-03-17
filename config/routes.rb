@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       constraints: ApiConstraints.new(version: 1, default: true) do
       resources :users, only: [:show, :create, :update, :destroy]
       resources :sessions, only: [:create, :destroy]
+      resources :tasks, only: [:index, :show, :create, :update, :destroy]
       # We are going to list our resources here
     end
   end
